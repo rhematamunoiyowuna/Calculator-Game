@@ -1,21 +1,52 @@
-from random import randint
+import random
 
-user_choice = int(input("Pick a number 0-2: ")) 
+print("Welcome to Rock, Paper, Scisssor")
+print("..........\n")
+print("How to play: ")
+print("Input Rock or Paper or Scissors and find out the if you win or lose ")
+print("Your opponent is the computer good luck")
+print("..................\n")
 
-if user_choice not in [0, 1, 2]:
-    print("Your number is invalid. Please pick a number between 0 and 2.")
-else:
-    choices = ["Rock", "Paper", "Scissors"]
-    print("Your choice is", choices[user_choice])
+import random
 
-    computer_choice = randint(0, 2)
-    print("Computer's choice is", choices[computer_choice])
+def play_game(player_move):
+    options = ["rock", "paper", "scissors"]
+    player_move = player_move.lower()
 
-    if user_choice == computer_choice:
-        print("It's a tie!")
-    elif (user_choice == 0 and computer_choice == 2) or \
-         (user_choice == 1 and computer_choice == 0) or \
-         (user_choice == 2 and computer_choice == 1):
-        print("You win!")
-    else:
-        print("You lose.")
+    if player_move not in options:
+        raise ValueError(f"{player_move} is not a valid move. Choose from {options}")
+
+    computer_move = random.choice(options)
+    print(f"Computer chose: {computer_move}")
+
+    if computer_move == player_move:
+        print("It's a tie! 👔")
+    elif computer_move == "rock":
+        if player_move == "paper":
+            print("You win, paper wraps the rock! ")
+        else:
+            print("You lose.. rock beats scissors! ")
+    elif computer_move == "paper":
+        if player_move == "rock":
+            print("You lose.. paper wraps the rock! ")
+        else:
+            print("You win, scissors cut the paper! ")
+    else:  # computer_move == "scissors"
+        if player_move == "paper":
+            print("You lose.. scissors cut the paper!")
+        else:
+            print("You win, rock breaks the scissors!")
+
+while True:
+    player_input = input("Please enter your move (rock, paper, or scissors): ").strip().lower()
+    try:
+        play_game(player_input)
+    except ValueError as e:
+        print(e)
+        continue
+
+    play_again = input("Play again? (yes/no): ").strip().lower()
+    if play_again != "yes":
+        print("Thanks for playing!")
+        break
+
