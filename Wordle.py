@@ -10,6 +10,8 @@ word_list = ['spain', 'japan', 'sudan', 'niger', 'malta',
              'house', 'field','green', 'travel', 'house', 'stamp',
              'nurse', 'climb','habit','plant', 'water', 
 ] 
+print("Welcome to Wordle! Guess the 5-letter word.\n")
+print("Here's how to play wordle")
 
 sample_list = []
 sample_word = "APPLE"
@@ -27,12 +29,16 @@ for i in range(len(sample_word)):
 
 print("".join(sample_list))
 
+
+print("'A' is in the word and in the correct spot")
+print("'P' and 'P' are not in the word")
+print("'L' and 'E' are in the word but in the wrong spot")
+print(".................................\n")
+
+
 def play_wordle():
     Wordle = random.choice(word_list)
     max_attempts = 6
-
-    print("Welcome to Wordle! Guess the 5-letter word.\n")
-    print("Here's how to play wordle")
     
 
     for attempt in range(max_attempts):
